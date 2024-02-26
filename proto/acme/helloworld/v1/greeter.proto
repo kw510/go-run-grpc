@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package acme.helloworld.v1;
+
+option go_package = "github.com/kw510/go-run-grpc/genproto/acme/helloworld/v1;helloworld";
+
+import "google/api/annotations.proto";
+
+service Greeter {
+	rpc Hello(GreeterHelloRequest) returns (GreeterHelloResponse) {
+		option (google.api.http) = {
+			get : "/v1/hello"
+		};
+	}
+}
+
+message GreeterHelloRequest {
+	string name = 1;
+}
+
+message GreeterHelloResponse {
+	string message = 1;
+}
